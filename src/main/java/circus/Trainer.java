@@ -6,29 +6,18 @@ import circus.animal.Duck;
 
 public class Trainer {
     public static void main(String[] args) {
-        Duck d = new Duck();
+        Duck d = new Duck("Donald");
         getToSpeak(d);
 
-        Bird b = (Bird)d;  // upcasting
+        Bird b = (Bird) d;  // upcasting
         getToSpeak(b);
 
-        Animal a = (Animal)b; // upcasting
+        Animal a = (Animal) b; // upcasting
         getToSpeak(a);
 
         Duck d2 = (Duck) a; // downcasting
-        train(new Duck());
-        Animal a2 = new Animal() {
-            @Override
-            public int getValue() {
-                return 0;
-            }
-
-            @Override
-            public String speak() {
-                return null;
-            }
-        };
-        Bird b2 = new Bird();
+        train(new Duck("Daisy"));
+        // train(new circus.animal.Parrot());
     }
 
     private static void getToSpeak(Animal animal) {
@@ -36,12 +25,9 @@ public class Trainer {
     }
 
     private static void train(Bird bird) {
-
         if (bird instanceof Duck) {
             Duck d = (Duck) bird;
-            if(d instanceof Duck) {
-                d.swim();
-            }
+            d.swim();
         }
     }
 }
